@@ -19,8 +19,9 @@ export class RecipesServiceService {
   }
 
   fetchRecipesListObser(){
-    return this.api.get(this.baseUrl + '/recipes');
+     const url = this.api.get(this.baseUrl + '/recipes');
+     return url;
   }
 
-  
+
 }
