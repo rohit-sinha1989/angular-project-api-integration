@@ -11,6 +11,10 @@ import { ThisReceiver } from '@angular/compiler';
 export class RecipesListComponent implements OnInit {
 
   recipesList = [];
+  selectedRecipeItem = [];
+  showRecipeModal: boolean = false;
+
+
   constructor(public recipesServices:RecipesServiceService) { }
 
   ngOnInit(): void {
@@ -34,4 +38,10 @@ export class RecipesListComponent implements OnInit {
     }
   }
 
+  showDetailsInfo(itemDetails)
+  {
+    console.log("Selected Item =>", itemDetails);
+    this.showRecipeModal = true;
+    this.selectedRecipeItem = itemDetails;
+  }
 }

@@ -1,31 +1,72 @@
-<!-- On tables -->
-<table class="table-primary">...</table>
-<table class="table-secondary">...</table>
-<table class="table-success">...</table>
-<table class="table-danger">...</table>
-<table class="table-warning">...</table>
-<table class="table-info">...</table>
-<table class="table-light">...</table>
-<table class="table-dark">...</table>
+<div style="background-color: blanchedalmond; margin-top: 0px;">
+   
+    <div class="table-position">
+        <div style="margin: 10px 10px 10px 0; width: 70%;">
+            <div style="display: flex;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <label for="count"> Showing {{recipesList.length/recipesList.length}}</label>
+        </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Cuisine</th>
+                    <th scope="col">Calories Per Serving</th>
+                    <th scope="col">Rating</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let recipe of recipesList">
+                    <td>{{recipe['id']}}</td>
+                    <td (click)="showDetailsInfo(recipe)" style="cursor: pointer;" title="Click here for more details">
+                        <div class="d-flex align-items-center">
+                            <img [src]="recipe['image']" alt="" style="width: 45px; height: 45px"
+                                class="rounded-circle" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">{{recipe['name']}}</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{recipe['cuisine']}}</td>
+                    <td>{{recipe['caloriesPerServing']}}</td>
+                    <td>{{recipe['rating']}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<!-- On rows -->
-<tr class="table-primary">...</tr>
-<tr class="table-secondary">...</tr>
-<tr class="table-success">...</tr>
-<tr class="table-danger">...</tr>
-<tr class="table-warning">...</tr>
-<tr class="table-info">...</tr>
-<tr class="table-light">...</tr>
-<tr class="table-dark">...</tr>
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"  [hidden]="showRecipeModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img [src]="selectedRecipeItem['image']" />
+                <h5 class="modal-title">{{selectedRecipeItem['name']}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+        </div>
+    </div>
+</div> -->
 
-<!-- On cells (`td` or `th`) -->
-<tr>
-  <td class="table-primary">...</td>
-  <td class="table-secondary">...</td>
-  <td class="table-success">...</td>
-  <td class="table-danger">...</td>
-  <td class="table-warning">...</td>
-  <td class="table-info">...</td>
-  <td class="table-light">...</td>
-  <td class="table-dark">...</td>
-</tr>
+<!-- Modal -->
+
+<div *ngIf="showRecipeModal" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <img [src]="selectedRecipeItem['image']" />
+            <h5 class="modal-title">{{selectedRecipeItem['name']}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+      </div>
+    </div>
+  </div>
+  
